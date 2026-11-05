@@ -1,0 +1,33 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: python -m pip install . build
+      - name: Offline tests
+        run: python -m unittest discover -v
+      - name: Publication guard
+        run: python scripts/check_public_tree.py
+      - name: Build distributions
+        run: python -m build
+      - name: Installed CLI smoke
+        env:
+          XDL_HOME: ${{ runner.temp }}/xdl-smoke
+        run: |
+          cd "$RUNNER_TEMP"
+          xdl --help
+          xdl run --help
+          xdl status

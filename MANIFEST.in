@@ -1,0 +1,12 @@
+include README.md README.en.md LICENSE SECURITY.md CONTRIBUTING.md
+include scrape.mjs test_xdl.py
+include *.command
+recursive-include tests *.py
+recursive-include examples *.json
+recursive-include scripts *.py
+recursive-exclude * __pycache__ *.py[cod]
+prune data
+prune downloads
+prune launchd
+prune build
+prune dist

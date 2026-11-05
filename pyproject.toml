@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "x-bookmarks-download"
+version = "1.0.0"
+description = "Download and incrementally archive images and videos from your X bookmarks on macOS"
+readme = "README.en.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+dependencies = ["rich>=13,<15"]
+
+[project.urls]
+Repository = "https://github.com/amorelove99/x-downloader"
+Issues = "https://github.com/amorelove99/x-downloader/issues"
+
+[project.scripts]
+xdl = "xdownload.cli:main"
+
+[tool.setuptools]
+packages = ["xdownload"]
+py-modules = ["xdl"]
+
+[tool.setuptools.package-data]
+xdownload = ["scrape.mjs"]

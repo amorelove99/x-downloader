@@ -1,0 +1,37 @@
+# Publish only the reviewed source surface. New root files require an explicit opt-in.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/README.en.md
+!/LICENSE
+!/SECURITY.md
+!/CONTRIBUTING.md
+!/pyproject.toml
+!/MANIFEST.in
+!/xdl.py
+!/scrape.mjs
+!/test_xdl.py
+!/启动 X Download.command
+!/xdownload/
+!/tests/
+!/scripts/
+!/examples/
+!/.github/
+
+# Credentials, user state and generated files stay private even inside source directories.
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+*.log
+*.part
+cookies*.txt
+auth*.json
+bark.json
+settings.json
+nas.json
